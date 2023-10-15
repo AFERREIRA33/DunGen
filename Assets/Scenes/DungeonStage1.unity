@@ -189,7 +189,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.2735849, g: 0.1974457, b: 0.1974457, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -279,18 +279,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f587b3ddf9804cc4a9e78e95f921ec3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 10}
+  size: {x: 5, y: 5}
   startPos: 0
   rooms:
-  - room: {fileID: 3956865985953054620, guid: 9c20ac0e0900d9e458d1fa7c84678acf, type: 3}
+  - room: {fileID: 3956865985953054620, guid: 21ecad2c45081404a9d760ac701bb49c, type: 3}
     minPos: {x: 0, y: 0}
-    maxPos: {x: 10, y: 10}
+    maxPos: {x: 0, y: 0}
+    obligatory: 1
+    NumberOfRoom: 1
+  - room: {fileID: 3956865985953054620, guid: 0db8e34a983295f4581769ba96fb2c37, type: 3}
+    minPos: {x: 4, y: 4}
+    maxPos: {x: 4, y: 4}
     obligatory: 0
-  - room: {fileID: 3956865985953054620, guid: bca1a477b37a7244c81e7eaa1b0ef4d4, type: 3}
-    minPos: {x: 5, y: 5}
-    maxPos: {x: 10, y: 10}
+    NumberOfRoom: 0
+  - room: {fileID: 3956865985953054620, guid: 6e353978535b9714da2929c0ccc1fd6e, type: 3}
+    minPos: {x: 0, y: 0}
+    maxPos: {x: 5, y: 5}
     obligatory: 0
-  offset: {x: 11, y: 11}
+    NumberOfRoom: -1
+  - room: {fileID: 3956865985953054620, guid: bcc0cc9ade935834c90adc2661344dac, type: 3}
+    minPos: {x: 0, y: 0}
+    maxPos: {x: 5, y: 5}
+    obligatory: 0
+    NumberOfRoom: 2
+  offset: {x: 40, y: 40}
 --- !u!4 &1321283612
 Transform:
   m_ObjectHideFlags: 0

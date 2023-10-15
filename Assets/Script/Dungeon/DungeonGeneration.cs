@@ -2,6 +2,7 @@ using Mono.CompilerServices.SymbolWriter;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class DungeonGeneration : MonoBehaviour
     {
         public bool visited = false;
         public bool[] status = new bool[4];
+        public bool isBoss = false;
     }
 
     [System.Serializable]
@@ -21,6 +23,8 @@ public class DungeonGeneration : MonoBehaviour
         public Vector2Int minPos;
         public Vector2Int maxPos;
         public bool obligatory;
+
+        public int NumberOfRoom = -1;
         public int ProbalityOfSpawning(int x,int y)
         {
             if (x >= minPos.x && x <= maxPos.x && y >= minPos.y && y <= maxPos.y)
@@ -43,32 +47,34 @@ public class DungeonGeneration : MonoBehaviour
         MazeGenerator();
     }
 
-    void Update()
-    {
-        
-    }
-
     void GenerateDungeon()
     {
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
             {
-                Cell currentCellv = board[Mathf.FloorToInt(i + j * size.x)];
-                if (currentCellv.visited) 
+                Cell currentCell = board[Mathf.FloorToInt(i + j * size.x)];
+                if (currentCell.visited) 
                 {
                     int randomRoom = -1;
                     List<int> availableRooms = new List<int>();
-                    for (int k = 0; k < rooms.Length; k++)
+                    if (currentCell.isBoss)
                     {
-                        int p = rooms[k].ProbalityOfSpawning(i, j);
-                        if (p == 2)
+                        randomRoom = 1;
+                    } else
+                    {
+                        for (int k = 0; k < rooms.Length; k++)
                         {
-                            randomRoom = k;
-                            break;
-                        } else if (p == 1)
-                        {
-                            availableRooms.Add(k);
+                            int p = rooms[k].ProbalityOfSpawning(i, j);
+                            if (p == 2)
+                            {
+                                randomRoom = k;
+                                break;
+                            }
+                            else if (p == 1 && rooms[k].NumberOfRoom != 0)
+                            {
+                                availableRooms.Add(k);
+                            }
                         }
                     }
                     if (randomRoom == -1 )
@@ -81,7 +87,12 @@ public class DungeonGeneration : MonoBehaviour
                             randomRoom = 0;
                         }
                     }
+                    if (rooms[randomRoom].NumberOfRoom > 0)
+                    {
+                        rooms[randomRoom].NumberOfRoom--;
+                    }
                     var newRoom = Instantiate(rooms[randomRoom].room, new Vector2(i * offset.x, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
+                    
                     newRoom.UpdateRoom(board[Mathf.FloorToInt(i + j * size.x)].status);
 
                     newRoom.name += " " + i + " " + j;
@@ -91,8 +102,9 @@ public class DungeonGeneration : MonoBehaviour
     }
     void MazeGenerator()
     {
+        int doorsOpen = 0;
         board = new List<Cell>();
-
+        List<int> possibleBoss = new List<int>();
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++) 
@@ -107,7 +119,6 @@ public class DungeonGeneration : MonoBehaviour
         {
             k++;
             board[currentCell].visited = true;
-
             List<int> neighbors = CheckNeighbors(currentCell);
             if (neighbors.Count == 0)
             {
@@ -116,6 +127,18 @@ public class DungeonGeneration : MonoBehaviour
                     break;
                 } else
                 {
+                    doorsOpen = 0;
+                    for (int i = 0; i < board[currentCell].status.Length; i++)
+                    {
+                        if (currentCell != 0)
+                        {
+                            doorsOpen = board[currentCell].status[i] ? doorsOpen + 1 : doorsOpen;
+                        }
+                    }
+                    if (doorsOpen == 1)
+                    {
+                        possibleBoss.Add(currentCell);
+                    }
                     currentCell = path.Pop();
                 }
             } else
@@ -153,6 +176,8 @@ public class DungeonGeneration : MonoBehaviour
                 }
             }
         }
+        int bossRoom = Random.Range(0, possibleBoss.Count);
+        board[possibleBoss[bossRoom]].isBoss = true;
         GenerateDungeon();
     }
     List<int> CheckNeighbors(int cell) 
@@ -184,5 +209,4 @@ public class DungeonGeneration : MonoBehaviour
 
         return neighbors;
     }
-
 }

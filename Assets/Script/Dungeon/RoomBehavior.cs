@@ -10,7 +10,6 @@ public class RoomBehavior : MonoBehaviour
 
     public bool[] testStatus;
 
-
     public void UpdateRoom(bool[] status)
     {
         for (int i = 0; i < status.Length; i++) 
@@ -19,4 +18,5 @@ public class RoomBehavior : MonoBehaviour
             walls[i].SetActive(!status[i]);
         } 
     }
+
 }
