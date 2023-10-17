@@ -25,4 +25,6 @@ public class Player : MonoBehaviour
         Vector2 rbPos = new Vector2(rb.position.x, rb.position.y);
         rb.MovePosition(rbPos+ movement * moveSpeed * Time.fixedDeltaTime);
     }
+
 }
+
