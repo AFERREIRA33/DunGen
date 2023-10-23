@@ -115,7 +115,7 @@ public class DungeonGeneration : MonoBehaviour
         int currentCell = startPos;
         Stack<int> path = new Stack<int>();
         int k = 0;
-        while(k < 100)
+        while(k < 1000)
         {
             k++;
             board[currentCell].visited = true;
