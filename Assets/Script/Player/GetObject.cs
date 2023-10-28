@@ -5,7 +5,9 @@ using UnityEngine;
 public class GetObject : MonoBehaviour
 {
     public GameObject sword;
+    public GameObject rotationPoint;
     public int numSword;
+    public Transform posSword;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +15,7 @@ public class GetObject : MonoBehaviour
         {
             if (collision.gameObject.name.Contains("Sword"))
             {
-                SetSword();
+                SetSword(collision.gameObject);
             } else if (collision.gameObject.name.Contains("Heart"))
             {
                 SetHeart(collision.gameObject);
@@ -21,9 +23,10 @@ public class GetObject : MonoBehaviour
         }
     }
 
-    private void SetSword()
+    private void SetSword(GameObject swordCol)
     {
-
+        GetComponentInChildren<RotateScript>().CreateSword();
+        Destroy(swordCol);
     }
     private void SetHeart(GameObject heart)
     {

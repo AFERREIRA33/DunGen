@@ -27,7 +27,6 @@ public class EnemyScript : MonoBehaviour
         {
             roomBehavior.enemyNum--;
             int spawnCoin = Random.Range(-1, coins.Length);
-            Debug.Log(spawnCoin);
             if (spawnCoin >= 0)
             {
                 Instantiate(coins[spawnCoin], new Vector3(transform.position.x, transform.position.y, -2) , Quaternion.identity);

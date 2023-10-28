@@ -12,6 +12,5 @@ public class Heart : MonoBehaviour
     public void setHeart(int status)
     {
         image.sprite = heartSprite[status];
-        Debug.Log(image.sprite.name);
     }
 }
