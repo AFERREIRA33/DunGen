@@ -222,6 +222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLifePoint: 3
+  coins:
+  - {fileID: 6651489824613020331, guid: d9078217af431454fb905d53a02d54f5, type: 3}
+  - {fileID: 8799727300130106203, guid: 4f801c6c170534b449aa6f551f5c6fba, type: 3}
+  - {fileID: 5766837181680908503, guid: 1c737ad722592c940ab60f5debb3e44e, type: 3}
+  - {fileID: 5227816219127172396, guid: a9b86d4c08b2f4d459499be8f76ab66d, type: 3}
 --- !u!1 &9127143346345171102
 GameObject:
   m_ObjectHideFlags: 0

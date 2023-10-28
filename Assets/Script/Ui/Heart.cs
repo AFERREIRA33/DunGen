@@ -8,15 +8,10 @@ public class Heart : MonoBehaviour
 {
     public Sprite[] heartSprite;
     public Image image;
-    // Start is called before the first frame update
-    void Start()
-    {
-        image.sprite = heartSprite[0];
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void setHeart(int status)
     {
-        
+        image.sprite = heartSprite[status];
+        Debug.Log(image.sprite.name);
     }
 }

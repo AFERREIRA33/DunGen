@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     private ShootingEnemy se;
     public int enemyLifePoint  = 3;
     private RoomBehavior roomBehavior;
+    public GameObject[] coins;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +23,15 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Vector2.Distance(player.transform.position, transform.position) <= 10f) 
-        //{
-        //    se.enabled = true;
-        //} else
-        //{
-        //    se.enabled = false;
-        //}
-
         if (enemyLifePoint <= 0)
         {
             roomBehavior.enemyNum--;
+            int spawnCoin = Random.Range(-1, coins.Length);
+            Debug.Log(spawnCoin);
+            if (spawnCoin >= 0)
+            {
+                Instantiate(coins[spawnCoin], new Vector3(transform.position.x, transform.position.y, -2) , Quaternion.identity);
+            }
             Destroy(gameObject);
         }
         

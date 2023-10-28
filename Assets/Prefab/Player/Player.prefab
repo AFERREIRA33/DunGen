@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 242921445141410246}
   - component: {fileID: 242921445141410247}
   - component: {fileID: 4697520633483262369}
+  - component: {fileID: 1408487438942872103}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,8 +151,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c381082ae7965d46ae9afa43928f1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   rb: {fileID: 242921445141410246}
+  moveSpeed: 5
+  money: 0
+  coinText: {fileID: 0}
+  oldMaxLife: 0
+  maxLife: 6
+  healthBarScript: {fileID: 0}
+  actualLife: 0
+--- !u!114 &1408487438942872103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242921445141410250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa266004dfc5254ea13c22359bb9fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword: {fileID: 8297463332974796803, guid: eed523b2150a4c747b8aefa9116809e9, type: 3}
+  numSword: 0
 --- !u!1 &2410656388173270916
 GameObject:
   m_ObjectHideFlags: 0
