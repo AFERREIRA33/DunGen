@@ -20,14 +20,17 @@ public class SwordScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Enemy"))
+        if (collision.gameObject.name.Contains("Enemy") || collision.gameObject.name.Contains("Boss"))
         {
             if (collision.gameObject.name.Contains("Bullet"))
             {
                 Destroy(collision.gameObject);
-            } else
+            } else if (collision.gameObject.name.Contains("Enemy"))
             {
                 collision.gameObject.GetComponent<EnemyScript>().enemyLifePoint--;
+            } else
+            {
+                collision.gameObject.GetComponent<BossScript>().bossLife--;
             }
             parent.GetComponent<RotateScript>().StartCoroutine("RespawnSword");
             Destroy(gameObject);

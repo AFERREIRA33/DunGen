@@ -7,10 +7,10 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject playerPos;
     public GameObject bullet;
     public Transform transformBullet;
+    public float timeShoot = 1;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Shoot());
         playerPos = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -23,8 +23,11 @@ public class ShootingEnemy : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(timeShoot);
         Instantiate(bullet, transformBullet.position, Quaternion.identity);
-        StartCoroutine(Shoot());
+        if (enabled)
+        {
+            StartCoroutine(Shoot());
+        }
     }
 }

@@ -486,9 +486,9 @@ MonoBehaviour:
     obligatory: 1
     NumberOfRoom: 1
   - room: {fileID: 3956865985953054620, guid: 0db8e34a983295f4581769ba96fb2c37, type: 3}
-    minPos: {x: 4, y: 4}
-    maxPos: {x: 4, y: 4}
-    obligatory: 0
+    minPos: {x: 0, y: 1}
+    maxPos: {x: 0, y: 1}
+    obligatory: 1
     NumberOfRoom: 0
   - room: {fileID: 3956865985953054620, guid: 6e353978535b9714da2929c0ccc1fd6e, type: 3}
     minPos: {x: 0, y: 0}
@@ -504,7 +504,7 @@ MonoBehaviour:
     minPos: {x: 1, y: 1}
     maxPos: {x: 3, y: 3}
     obligatory: 0
-    NumberOfRoom: 1
+    NumberOfRoom: 2
   offset: {x: 40, y: 40}
 --- !u!4 &1321283612
 Transform:

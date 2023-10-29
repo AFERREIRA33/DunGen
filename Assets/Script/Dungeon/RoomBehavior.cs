@@ -10,6 +10,7 @@ public class RoomBehavior : MonoBehaviour
     public bool[] isOpen;
     private GameObject player;
     public int enemyNum;
+    public Canvas bossHUD;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");  
@@ -20,16 +21,21 @@ public class RoomBehavior : MonoBehaviour
         {
             for (int i = 0; i < isOpen.Length; i++)
             {
+                walls[i].SetActive(true);
+            }
+            if (gameObject.name.Contains("Boss"))
+            {
+                bossHUD.gameObject.SetActive(true);
+
+            } else
+            {
                 ShootingEnemy[] sE = GetComponentsInChildren<ShootingEnemy>();
                 foreach (ShootingEnemy room in sE)
                 {
                     room.enabled = true;
                 }
-                walls[i].SetActive(true);
             }
         } 
-
-
         if (enemyNum <= 0 ){
             UpdateRoom(isOpen);
         }
