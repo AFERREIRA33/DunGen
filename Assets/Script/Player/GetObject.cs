@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GetObject : MonoBehaviour
@@ -8,27 +9,15 @@ public class GetObject : MonoBehaviour
     public GameObject rotationPoint;
     public int numSword;
     public Transform posSword;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Object")
-        {
-            if (collision.gameObject.name.Contains("Sword"))
-            {
-                SetSword(collision.gameObject);
-            } else if (collision.gameObject.name.Contains("Heart"))
-            {
-                SetHeart(collision.gameObject);
-            }
-        }
-    }
-
-    private void SetSword(GameObject swordCol)
+    public TextMeshProUGUI swordTxt;
+    public void SetSword(GameObject swordCol)
     {
         GetComponentInChildren<RotateScript>().CreateSword();
         Destroy(swordCol);
+        numSword++;
+        swordTxt.text = numSword.ToString();
     }
-    private void SetHeart(GameObject heart)
+    public void SetHeart(GameObject heart)
     {
         Player player = GetComponent<Player>();
         if (heart.name.Contains("Demi"))

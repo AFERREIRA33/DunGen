@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1da96e81cb04544da6c05f5c3779441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformBullet: {fileID: 0}
   rotationSpeed: 30
+  parent: {fileID: 0}
