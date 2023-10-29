@@ -63,6 +63,8 @@ public class BossScript : MonoBehaviour
                 break;
             case 1:
                 GetComponent<Phase2>().enabled = true;
+                GetComponent<Phase2>().StartCoroutine("ShootCircle");
+
                 break;
 
             case (2):

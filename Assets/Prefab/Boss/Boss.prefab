@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4459519606594972678}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f922a3e54a4955c469c075b041f77761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeShoot: 0.2
+  angle: 0
+  bullet: {fileID: 1740849947611437467, guid: 73febf364ce9cf4499771d9a2f92148d, type: 3}
 --- !u!114 &6062687751170228742
 MonoBehaviour:
   m_ObjectHideFlags: 0

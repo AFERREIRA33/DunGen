@@ -26,7 +26,7 @@ public class RoomBehavior : MonoBehaviour
             if (gameObject.name.Contains("Boss"))
             {
                 bossHUD.gameObject.SetActive(true);
-
+                GetComponentInChildren<BossScript>().enabled = true;
             } else
             {
                 ShootingEnemy[] sE = GetComponentsInChildren<ShootingEnemy>();
