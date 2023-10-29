@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +12,10 @@ public class BossScript : MonoBehaviour
     public Slider lifeBar;
     public bool phaseChoosed = false;
     public int numPhase = 4;
+    public GameManager gameManager;
     public void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
     }
     public void Update()
     {
@@ -26,8 +26,8 @@ public class BossScript : MonoBehaviour
         }
         if (bossLife <= 0)
         {
-            bossLife = 49;
-            //Destroy(gameObject);
+            gameManager.GameOver(true);
+            Destroy(gameObject);
 
         }
         if (bossLife % 10 == 0 && !phaseChoosed)
@@ -51,7 +51,6 @@ public class BossScript : MonoBehaviour
     public void PhaseChoice()
     {
         int phase = Random.Range(0, numPhase);
-        phase = 3;
         GetComponent<ShootingEnemy>().enabled = false;
         GetComponent<Phase2>().enabled = false;
         GetComponent<Phase3>().enabled = false;
@@ -60,7 +59,7 @@ public class BossScript : MonoBehaviour
         { 
             case 0:
                 GetComponent<ShootingEnemy>().enabled = true;
-                GetComponent<ShootingEnemy>().StartCoroutine("Shoot");
+                GetComponent<ShootingEnemy>().first = true;
                 break;
             case 1:
                 GetComponent<Phase2>().enabled = true;

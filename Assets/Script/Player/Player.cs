@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public int maxLife = 6;
     public HealthBarScript healthBarScript;
     [HideInInspector] public int actualLife;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,10 @@ public class Player : MonoBehaviour
             oldMaxLife = maxLife;
             healthBarScript.AddHeart(maxLife/2 - 1);
             healthBarScript.SetLife(actualLife);
+        }
+        if (actualLife <=0)
+        {
+            gameManager.GameOver(false);
         }
     }
 

@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         roomBehavior.enemyNum = enemyNum;
         for (int i = 0;  i < enemyNum; i++)
         {
-            en = Instantiate(enemy, new Vector2(transform.position.x + Random.Range(-10, 10), transform.position.y + Random.Range(-10, 10)), Quaternion.identity);
+            en = Instantiate(enemy, new Vector3(transform.position.x + Random.Range(-10, 10), transform.position.y + Random.Range(-10, 10), -2), Quaternion.identity);
             en.transform.parent = transform;
         }
     }

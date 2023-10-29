@@ -19,7 +19,6 @@ public class EnemyScript : MonoBehaviour
         roomBehavior = GetComponentInParent<RoomBehavior>();
 
     }
-
     // Update is called once per frame
     void Update()
     {
