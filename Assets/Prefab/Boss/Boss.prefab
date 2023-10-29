@@ -173,6 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340f9071dfe8564408650db3152bb885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  force: 12
+  rb: {fileID: 0}
+  timeDash: 1
 --- !u!114 &3204635335083509978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88be823c6b28bc84f90d338b5a400858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemy: {fileID: 7955172465893445583, guid: 1e5e4a04b6ac8d048881d44a38fb9085, type: 3}
+  spawnPoint: {fileID: 1928968440427293692}
+  timeShoot: 5
 --- !u!58 &4459519606594972678
 CircleCollider2D:
   m_ObjectHideFlags: 0

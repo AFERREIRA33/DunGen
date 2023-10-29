@@ -51,6 +51,7 @@ public class BossScript : MonoBehaviour
     public void PhaseChoice()
     {
         int phase = Random.Range(0, numPhase);
+        phase = 3;
         GetComponent<ShootingEnemy>().enabled = false;
         GetComponent<Phase2>().enabled = false;
         GetComponent<Phase3>().enabled = false;
@@ -69,9 +70,12 @@ public class BossScript : MonoBehaviour
 
             case (2):
                 GetComponent<Phase3>().enabled = true;
+                GetComponent<Phase3>().StartCoroutine("Dash");
+
                 break;
             default:
                 GetComponent<Phase4>().enabled = true;
+                GetComponent<Phase4>().StartCoroutine("Spawn");
                 break;
         }
     }

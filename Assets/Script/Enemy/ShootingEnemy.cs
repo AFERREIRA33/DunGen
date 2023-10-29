@@ -12,6 +12,7 @@ public class ShootingEnemy : MonoBehaviour
     void Start()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(Shoot());
     }
 
     // Update is called once per frame
